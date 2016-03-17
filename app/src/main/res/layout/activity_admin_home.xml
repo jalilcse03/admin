@@ -24,12 +24,12 @@
         android:text="@string/add_question_btn"
         android:id="@+id/question_btn"
         />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add_answer_btn"
-        android:id="@+id/answer_btn"
-        />
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/add_answer_btn"-->
+        <!--android:id="@+id/answer_btn"-->
+        <!--/>-->
 
     <Button
         android:layout_width="match_parent"
@@ -41,8 +41,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/select_list_btn"
-        android:id="@+id/selectedList_btn"
+        android:text="@string/result_publish_btn"
+        android:id="@+id/resultPublisBt"
         />
     <Button
         android:layout_width="match_parent"

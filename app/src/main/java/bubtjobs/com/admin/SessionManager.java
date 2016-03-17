@@ -25,6 +25,9 @@ public class SessionManager {
 
 	// exam button
 	public static final String BUTTON_TEXT="exambutton";
+
+	// result publish
+	public static final String RESULT_PUBLISH="result_publish";
 	
 	//constructor
 	public SessionManager(Context _context) {
@@ -71,13 +74,21 @@ public class SessionManager {
 
 	// button
 	public String getbuttonText(){
-		return perf.getString(BUTTON_TEXT,null);
+		return perf.getString(BUTTON_TEXT," ");
 	}
 	public void buttonTextChage(String s){
 		editor.putString(BUTTON_TEXT,s);
 		editor.commit();
 	}
     
-	
+	// result
+	public String getResult(){
+		return perf.getString(RESULT_PUBLISH," ");
+	}
+
+	public void setResult(String s){
+		editor.putString(RESULT_PUBLISH,s);
+		editor.commit();
+	}
 
 }

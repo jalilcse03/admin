@@ -388,5 +388,64 @@ public class DataBaseManager {
             return true;
         } else return false;
     }
+    /************************************* Exam Status update **************************/
+    public boolean studentExamStatusUpdate(String id){
+        this.open();
 
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DataBaseHelper.EXAM_STATUS,"1");
+        int updated = database.update(DataBaseHelper.TABLE_STUDENTINFO, contentValues, DataBaseHelper.COL_ID + " = "+id , null);
+        this.close();
+        if (updated > 0) {
+            return true;
+        } else return false;
+    }
+    /************************************* result update **************************/
+    public boolean studentResultUpdate(String id,String mark){
+        this.open();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DataBaseHelper.MARKS,mark);
+        int updated = database.update(DataBaseHelper.TABLE_STUDENTINFO, contentValues, DataBaseHelper.COL_ID + " = "+id , null);
+        this.close();
+        if (updated > 0) {
+            return true;
+        } else return false;
+    }
+    /***************************** check before exam attend ********************************************/
+    public boolean checkExamStatus(String id)
+    {
+        this.open();
+
+        String sql="select * from "+DataBaseHelper.TABLE_STUDENTINFO+ " where "+DataBaseHelper.COL_ID+" = "+id+" and "+DataBaseHelper.EXAM_STATUS+" = 0";
+
+        Cursor cursor=database.rawQuery(sql, null);
+        if(cursor!=null && cursor.getCount()>0)
+        {
+            this.close();
+            return true;
+        }
+        return false;
+
+    }
+
+    /***************************** show result ********************************************/
+    public String showStudentResult(String id)
+    {
+        this.open();
+
+        String sql="select * from "+DataBaseHelper.TABLE_STUDENTINFO+ " where "+DataBaseHelper.COL_ID+" = "+id;
+
+        Cursor cursor=database.rawQuery(sql,null);
+        cursor.moveToFirst();
+
+        if(cursor!=null && cursor.getCount()>0)
+        {
+            this.close();
+
+            return cursor.getString(cursor.getColumnIndex(DataBaseHelper.MARKS));
+        }
+        return "0";
+
+    }
 }

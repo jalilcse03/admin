@@ -25,6 +25,8 @@
         <activity android:name=".StudentHome_activity" />
         <activity android:name=".Message_activity" />
         <activity android:name=".Notification_activity"></activity>
+        <activity android:name=".Exam"></activity>
+
     </application>
 
 </manifest>

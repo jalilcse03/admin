@@ -29,6 +29,11 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
         registrationCancleBt=(Button)findViewById(R.id.registrationCancleBt);
         LogoutBt=(Button)findViewById(R.id.LogoutBt);
 
+        examBt.setEnabled(false);
+
+
+
+        // notification
         String result=dataBaseManager.checkNewNotificatin(sessionManager.getUserId());
         if(result.equals("yes"))
         {
@@ -37,6 +42,22 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
         }
         //Toast.makeText(this,sessionManager.getUserId(),Toast.LENGTH_LONG).show();
 
+        // exam
+        String isExamStart=sessionManager.getbuttonText();
+        if(isExamStart.equals("Exam Stop") && dataBaseManager.checkExamStatus(sessionManager.getUserId()))
+        {
+            examBt.setEnabled(true);
+        }
+
+        // result
+        if(sessionManager.getResult().equals("yes"))
+        {
+            resultBt.setEnabled(true);
+        }
+        else
+        {
+            resultBt.setEnabled(false);
+        }
 
         notificationBt.setOnClickListener(this);
         examBt.setOnClickListener(this);
@@ -57,12 +78,19 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
 
             break;
             case R.id.examBt:
-                String result=sessionManager.getbuttonText();
-                Toast.makeText(this,result,Toast.LENGTH_LONG).show();
+                boolean isExamStatusUpdate=dataBaseManager.studentExamStatusUpdate(sessionManager.getUserId());
+                if(isExamStatusUpdate)
+                {
+                    answerReset();
+                    startActivity(new Intent(this,Exam.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
+                }
+
                 break;
             case R.id.examRuleBt:
                 break;
             case R.id.resultBt:
+                showResult();
                 break;
             case R.id.registrationCancleBt:
                 break;
@@ -71,5 +99,41 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
                 sessionManager.logoutUser();
                 break;
         }
+    }
+
+    public void answerReset(){
+        DataBaseManager manager=new DataBaseManager(this);
+        ArrayList<Answer> answersset=new ArrayList<>();
+
+        Answer answer=new Answer("$_myvar","de");
+        answersset.add(answer);
+        answer=new Answer("#null","de");
+        answersset.add(answer);
+        answer=new Answer("?:","de");
+        answersset.add(answer);
+        answer=new Answer("murtuza","de");
+        answersset.add(answer);
+        answer=new Answer("black","de");
+        answersset.add(answer);
+        answer=new Answer("p","de");
+        answersset.add(answer);
+        answer=new Answer("quran","de");
+        answersset.add(answer);
+        answer=new Answer("codding","de");
+        answersset.add(answer);
+        boolean isanswerRest=manager.addAnswer(answersset);
+
+//        //  Toast.makeText(this,""+isanswerRest,Toast.LENGTH_SHORT).show();
+//        if(isanswerRest)
+//        {
+//            Toast.makeText(this,"Add Answer Set Successful",Toast.LENGTH_SHORT).show();
+//        }
+//        else
+//            Toast.makeText(this,"Answer Set Error",Toast.LENGTH_SHORT).show();
+    }
+
+    public void showResult(){
+        String mark=dataBaseManager.showStudentResult(sessionManager.getUserId());
+        Toast.makeText(this,""+mark,Toast.LENGTH_SHORT).show();
     }
 }

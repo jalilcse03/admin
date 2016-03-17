@@ -13,7 +13,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class admin_home extends AppCompatActivity implements View.OnClickListener{
-    Button resgistrationList_btn,notification_btn,question_btn,answer_btn,selectedList_btn,logout_btn,examStart_btn;
+    Button resgistrationList_btn,notification_btn,question_btn,answer_btn,resultPublisBt,logout_btn,examStart_btn;
 
     DataBaseManager manager;
     SessionManager sessionManager;
@@ -30,26 +30,38 @@ public class admin_home extends AppCompatActivity implements View.OnClickListene
         resgistrationList_btn=(Button)findViewById(R.id.resgistrationList_btn);
         notification_btn=(Button)findViewById(R.id.notification_btn);
         question_btn=(Button)findViewById(R.id.question_btn);
-        answer_btn=(Button)findViewById(R.id.answer_btn);
+        //answer_btn=(Button)findViewById(R.id.answer_btn);
         examStart_btn=(Button)findViewById(R.id.examStart_btn);
-        selectedList_btn=(Button)findViewById(R.id.selectedList_btn);
+        resultPublisBt=(Button)findViewById(R.id.resultPublisBt);
         logout_btn=(Button)findViewById(R.id.logout_btn);
 
         sessionManager=new SessionManager(this);
+
+        // exam start button
         String text=sessionManager.getbuttonText();
-        if(text!=null)
+        if(text.equals(" "))
+            ;
+        else
             examStart_btn.setText(text);
 
         manager=new DataBaseManager(this);
 
+        // result publish button
 
+        if(sessionManager.getResult().equals("yes"))
+        {
+            resultPublisBt.setText("Stop Result Publish");
+        }
+        else{
+            resultPublisBt.setText("Result Publish");
+        }
 
         resgistrationList_btn.setOnClickListener(this);
         notification_btn.setOnClickListener(this);
         question_btn.setOnClickListener(this);
-        answer_btn.setOnClickListener(this);
+       // answer_btn.setOnClickListener(this);
         examStart_btn.setOnClickListener(this);
-        selectedList_btn.setOnClickListener(this);
+        resultPublisBt.setOnClickListener(this);
         logout_btn.setOnClickListener(this);
     }
 
@@ -71,14 +83,29 @@ public class admin_home extends AppCompatActivity implements View.OnClickListene
                 addqustionSet();
                 break;
 
-            case R.id.answer_btn:
-                addAnswerSet();
-                break;
+//            case R.id.answer_btn:
+//                addAnswerSet();
+//                break;
             case R.id.examStart_btn:
+                addqustionSet();
                examStart();
                 break;
 
-            case R.id.selectedList_btn:
+            case R.id.resultPublisBt:
+                if(resultPublisBt.getText().toString().equals("Result Publish")) {
+                    // exam stop
+                    sessionManager.buttonTextChage("Exam Start");
+                    examStart_btn.setText("Exam Start");
+
+                    // result publish
+                    sessionManager.setResult("yes");
+                    resultPublisBt.setText("Stop Result Publish");
+                }
+                else{
+
+                    sessionManager.setResult("no");
+                    resultPublisBt.setText("Result Publish");
+                }
                 break;
 
             case R.id.logout_btn:
@@ -145,12 +172,6 @@ public class admin_home extends AppCompatActivity implements View.OnClickListene
         answersset.add(answer);
         answer=new Answer("codding","de");
         answersset.add(answer);
-
-
-
-
-
-
         boolean isanswerRest=manager.addAnswer(answersset);
 
         //  Toast.makeText(this,""+isanswerRest,Toast.LENGTH_SHORT).show();
@@ -166,6 +187,9 @@ public class admin_home extends AppCompatActivity implements View.OnClickListene
         {
             sessionManager.buttonTextChage("Exam Stop");
             examStart_btn.setText("Exam Stop");
+
+            sessionManager.setResult("no");
+            resultPublisBt.setText("Result Publish");
         }
         else{
             sessionManager.buttonTextChage("Exam Start");
