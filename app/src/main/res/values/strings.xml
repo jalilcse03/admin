@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Admin</string>
+    <!-- button name-->
+    <string name="registration_list_btn">Registration List</string>
+    <string name="notification_btn">Send Notification</string>
+    <string name="add_question_btn">Add Question</string>
+    <string name="add_answer_btn">Add Answer</string>
+    <string name="select_list_btn">Final Selected List</string>
+
+    <string name="exam_start_btn">Exam Start</string>
+    <string name="logout_btn">Logout</string>
+    <string name="title_activity_registration_list_activity">RegistrationList_activity</string>
+</resources>
