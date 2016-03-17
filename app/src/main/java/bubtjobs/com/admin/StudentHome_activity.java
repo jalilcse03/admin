@@ -105,21 +105,25 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
         DataBaseManager manager=new DataBaseManager(this);
         ArrayList<Answer> answersset=new ArrayList<>();
 
-        Answer answer=new Answer("$_myvar","de");
+        Answer answer=new Answer("interface","de");
         answersset.add(answer);
-        answer=new Answer("#null","de");
+        answer=new Answer("native","de");
         answersset.add(answer);
-        answer=new Answer("?:","de");
+        answer=new Answer("start()","de");
         answersset.add(answer);
-        answer=new Answer("murtuza","de");
+        answer=new Answer("start()","de");
         answersset.add(answer);
-        answer=new Answer("black","de");
+        answer=new Answer("true & false","de");
         answersset.add(answer);
-        answer=new Answer("p","de");
+        answer=new Answer("boolean b3 = false","de");
         answersset.add(answer);
-        answer=new Answer("quran","de");
+        answer=new Answer("Andy Rubin","de");
         answersset.add(answer);
-        answer=new Answer("codding","de");
+        answer=new Answer("7","de");
+        answersset.add(answer);
+        answer=new Answer("2","de");
+        answersset.add(answer);
+        answer=new Answer("Android Debug Bridge","de");
         answersset.add(answer);
         boolean isanswerRest=manager.addAnswer(answersset);
 

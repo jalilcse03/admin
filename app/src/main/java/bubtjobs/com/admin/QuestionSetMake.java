@@ -15,23 +15,24 @@ public class QuestionSetMake {
     public QuestionSetMake(){}
 
     public QuestionSetMake(String question,  String op1, String op2, String op3, String op4,String answer) {
-        this.question = question;
-        this.answer = answer;
-        this.op4 = op4;
-        this.op3 = op3;
-        this.op2 = op2;
-        this.op1 = op1;
+
+        setQuestion(question);
+        setOp1(op1);
+        setOp2(op2);
+        setOp3(op3);
+        setOp4(op4);
+        setAnswer(answer);
+
     }
 
-    public QuestionSetMake(String question, String op1, String op2, String op3, String op4, String answer,String qustionId) {
-        this.question = question;
-
-        this.op4 = op4;
-        this.op3 = op3;
-        this.op2 = op2;
-        this.op1 = op1;
-        this.answer = answer;
-        this.qustionId=qustionId;
+    public QuestionSetMake(String question,String answer, String op1, String op2, String op3, String op4,String qustionId) {
+        setQuestion(question);
+        setOp1(op1);
+        setOp2(op2);
+        setOp3(op3);
+        setOp4(op4);
+        setAnswer(answer);
+        setQustionId(qustionId);
     }
 
     public String getQustionId() {

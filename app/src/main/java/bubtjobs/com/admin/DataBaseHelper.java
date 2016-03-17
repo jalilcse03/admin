@@ -24,7 +24,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     static final String COL_OP1="option1";
     static final String COL_OP2="option2";
     static final String COL_OP3="option3";
-    static final String COL_OP4="option14";
+    static final String COL_OP4="option4";
     static final String ANSWER="answer";
     //answer table
     static final String ANS_ID="id";

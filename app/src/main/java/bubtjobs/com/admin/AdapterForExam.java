@@ -21,6 +21,8 @@ public class AdapterForExam extends ArrayAdapter<QuestionSetMake> {
     private ArrayList<QuestionSetMake> questionList;
     private Context context;
 
+   private int mSelectedVariation=0;
+
     public AdapterForExam(Context context, ArrayList<QuestionSetMake> questionList) {
         super(context, R.layout.single_row,questionList);
         this.context=context;
@@ -35,7 +37,7 @@ public class AdapterForExam extends ArrayAdapter<QuestionSetMake> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
 
         if(convertView==null)
@@ -51,18 +53,6 @@ public class AdapterForExam extends ArrayAdapter<QuestionSetMake> {
             viewHolder.option3=(RadioButton)convertView.findViewById(R.id.op3);
             viewHolder.option4=(RadioButton)convertView.findViewById(R.id.op4);
 
-//            viewHolder.qestionTv.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Toast.makeText(context,"",Toast.LENGTH_SHORT).show();
-//                }
-//            });
-
-//            viewHolder.item1=(RadioButton)convertView.findViewById(R.id.item1);
-//            viewHolder.item2=(RadioButton)convertView.findViewById(R.id.item2);
-//            viewHolder.item3=(RadioButton)convertView.findViewById(R.id.item3);
-//            viewHolder.item4=(RadioButton)convertView.findViewById(R.id.item4);
-
 
             convertView.setTag(viewHolder);
         }
@@ -70,23 +60,29 @@ public class AdapterForExam extends ArrayAdapter<QuestionSetMake> {
             viewHolder= (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.qestionTv.setText(questionList.get(position).getQuestion());
-        viewHolder.idTv.setText(questionList.get(position).getQustionId());
-        viewHolder.option1.setText(questionList.get(position).getOp1());
-        viewHolder.option2.setText(questionList.get(position).getOp2());
-        viewHolder.option3.setText(questionList.get(position).getOp3());
-        viewHolder.option4.setText(questionList.get(position).getOp4());
+
+        if(position==mSelectedVariation) viewHolder.option1.setChecked(true);
+        else viewHolder.option1.setChecked(false);
+
+
+
 
         viewHolder.option1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String t =dataBaseManager.updateAnswer(viewHolder.idTv.getText().toString(),viewHolder.option1.getText().toString());
-                Toast.makeText(context, ""+t, Toast.LENGTH_SHORT).show();
+                mSelectedVariation = position;
+                AdapterForExam.this.notifyDataSetChanged();
             }
         });
+
+
+
         viewHolder.option2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String t =dataBaseManager.updateAnswer(viewHolder.idTv.getText().toString(),viewHolder.option2.getText().toString());
                // Toast.makeText(context,""+viewHolder.option2.getText().toString()+"ID: "+viewHolder.idTv.getText().toString(),Toast.LENGTH_SHORT).show();
             }
@@ -95,22 +91,17 @@ public class AdapterForExam extends ArrayAdapter<QuestionSetMake> {
             @Override
             public void onClick(View v) {
                 String t =dataBaseManager.updateAnswer(viewHolder.idTv.getText().toString(),viewHolder.option3.getText().toString());
-               // Toast.makeText(context,""+viewHolder.option3.getText().toString()+"ID: "+viewHolder.idTv.getText().toString(),Toast.LENGTH_SHORT).show();
+
             }
         });
         viewHolder.option4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String t =dataBaseManager.updateAnswer(viewHolder.idTv.getText().toString(),viewHolder.option4.getText().toString());
-               // Toast.makeText(context,""+viewHolder.option4.getText().toString()+"ID: "+viewHolder.idTv.getText().toString(),Toast.LENGTH_SHORT).show();
+
             }
         });
 
-//        viewHolder.item1.setText(contactList.get(position).getOp1());
-//        viewHolder.item2.setText(contactList.get(position).getOp2());
-//        viewHolder.item3.setText(contactList.get(position).getOp3());
-//        viewHolder.item4.setText(contactList.get(position).getOp4());
-        // viewHolder.idTv.setText(""+contactList.get(position).getId());
 
 
         return convertView;

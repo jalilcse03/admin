@@ -119,28 +119,34 @@ public class admin_home extends AppCompatActivity implements View.OnClickListene
         questionSetMake=new QuestionSetMake();
         ArrayList<QuestionSetMake> questionSet=new ArrayList<>();
 
-        questionSetMake=new QuestionSetMake("Which of the following is a legal identifier in java ?","2variable","#myvar","+@$var","$_myvar","$_myvar");
+        questionSetMake=new QuestionSetMake("Which is a valid keyword in java?","interface","string","Float","unsigned ","interface");
         questionSet.add(questionSetMake);
 
-        questionSetMake=new QuestionSetMake("Which of these is NOT valid keyword or reserved word in Java ?","default","#null","String","String","#null");
+        questionSetMake=new QuestionSetMake("Which is a reserved word in the Java programming language?","Method","native","subclasses","reference ","native");
         questionSet.add(questionSetMake);
 
-        questionSetMake=new QuestionSetMake("Which operator will always evaluate all the operands ?","||","&&","?:","%","?:");
+        questionSetMake=new QuestionSetMake("What is the name of the method used to start a thread execution?","init()","start()","run()","resume()","start()");
         questionSet.add(questionSetMake);
 
-        questionSetMake=new QuestionSetMake("What is my name?","jalilur","rahman","murtuza","ali","murtuza");
+        questionSetMake=new QuestionSetMake("Which method registers a thread in a thread scheduler??","run()","construct()","start()","register()","start()");
         questionSet.add(questionSetMake);
 
-        questionSetMake=new QuestionSetMake("What is your favorit color?","black","red","olive","pink","black");
+        questionSetMake=new QuestionSetMake("Which of these values can a boolean variable contain?","true & false","0 & 1","Any integer value","True","true & false");
         questionSet.add(questionSetMake);
 
-        questionSetMake=new QuestionSetMake("your best friend?","a","t","p","k","p");
+        questionSetMake=new QuestionSetMake("Which one is a valid declaration of a boolean?","boolean b1 = 1","boolean b2 = ‘false’","boolean b3 = false","boolean b4 = ‘true’","boolean b3 = false");
         questionSet.add(questionSetMake);
 
-        questionSetMake=new QuestionSetMake("your best book?","quran","math","english","java","quran");
+        questionSetMake=new QuestionSetMake("Who is the founder of Android?","Andy Rubin","Mark","Heli","Robi","Andy Rubin");
         questionSet.add(questionSetMake);
 
-        questionSetMake=new QuestionSetMake("your hobby?","swing","codding","dancing","visiting","codding");
+        questionSetMake=new QuestionSetMake("How many the life cycle methods of android activity?","7","6","5","9","7");
+        questionSet.add(questionSetMake);
+
+        questionSetMake=new QuestionSetMake("How many types of intent?","3","6","2","1","2");
+        questionSet.add(questionSetMake);
+
+        questionSetMake=new QuestionSetMake("What is ADB?","assistant Debug Bridge","assistant Debug Boat","android Degub boat","Android Debug Bridge","Android Debug Bridge");
         questionSet.add(questionSetMake);
 
         DataBaseManager manager=new DataBaseManager(this);
@@ -156,21 +162,25 @@ public class admin_home extends AppCompatActivity implements View.OnClickListene
         DataBaseManager manager=new DataBaseManager(this);
         ArrayList<Answer> answersset=new ArrayList<>();
 
-        Answer answer=new Answer("$_myvar","de");
+        Answer answer=new Answer("interface","de");
         answersset.add(answer);
-        answer=new Answer("#null","de");
+        answer=new Answer("native","de");
         answersset.add(answer);
-        answer=new Answer("?:","de");
+        answer=new Answer("start()","de");
         answersset.add(answer);
-        answer=new Answer("murtuza","de");
+        answer=new Answer("start()","de");
         answersset.add(answer);
-        answer=new Answer("black","de");
+        answer=new Answer("true & false","de");
         answersset.add(answer);
-        answer=new Answer("p","de");
+        answer=new Answer("boolean b3 = false","de");
         answersset.add(answer);
-        answer=new Answer("quran","de");
+        answer=new Answer("Andy Rubin","de");
         answersset.add(answer);
-        answer=new Answer("codding","de");
+        answer=new Answer("7","de");
+        answersset.add(answer);
+        answer=new Answer("2","de");
+        answersset.add(answer);
+        answer=new Answer("Android Debug Bridge","de");
         answersset.add(answer);
         boolean isanswerRest=manager.addAnswer(answersset);
 

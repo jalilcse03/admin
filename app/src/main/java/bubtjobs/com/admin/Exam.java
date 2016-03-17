@@ -7,6 +7,8 @@ import android.os.Build;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Checkable;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +29,9 @@ public class Exam extends AppCompatActivity {
 
         timeTv=(TextView)findViewById(R.id.time);
         listView=(ListView)findViewById(R.id.listView);
+        //listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+
 
         ArrayList<QuestionSetMake> questions=new ArrayList<>();
 
@@ -42,7 +47,7 @@ public class Exam extends AppCompatActivity {
         else{
             Toast.makeText(Exam.this,"Error",Toast.LENGTH_SHORT).show();
         }
-        new CounterClass(15000,1000).start();
+        new CounterClass(60000,1000).start();
 
     }
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
