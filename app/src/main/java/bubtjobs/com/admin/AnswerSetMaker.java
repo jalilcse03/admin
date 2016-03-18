@@ -3,14 +3,14 @@ package bubtjobs.com.admin;
 /**
  * Created by Murtuza on 3/15/2016.
  */
-public class Answer {
+public class AnswerSetMaker {
     private String key;
     private String value;
 
-    public Answer() {
+    public AnswerSetMaker() {
     }
 
-    public Answer(String key, String value) {
+    public AnswerSetMaker(String key, String value) {
         this.key = key;
         this.value = value;
     }

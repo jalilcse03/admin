@@ -3,15 +3,15 @@ package bubtjobs.com.admin;
 /**
  * Created by Mobile App Develop on 16-3-16.
  */
-public class RegistrationList {
+public class RegistrationListMaker {
     private String userName;
     private String userEmail;
     private String userId;
 
-    public RegistrationList() {
+    public RegistrationListMaker() {
     }
 
-    public RegistrationList(String userName, String userEmail, String userId) {
+    public RegistrationListMaker(String userName, String userEmail, String userId) {
         this.userName = userName;
         this.userEmail = userEmail;
         this.userId = userId;

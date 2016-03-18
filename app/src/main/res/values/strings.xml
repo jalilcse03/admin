@@ -10,4 +10,36 @@
     <string name="exam_start_btn">Exam Start</string>
     <string name="logout_btn">Logout</string>
     <string name="title_activity_registration_list_activity">RegistrationList_activity</string>
+
+
+    <!-- tarikul vai code-->
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login_Text">LOGIN</string>
+    <string name="wellcome">Wellcome To BITM!</string>
+    <string name="create_account">Create Account</string>
+    <string name="title_activity_registration">Registration</string>
+
+    <string name="reg_name">Full Name</string>
+    <string name="reg_email">Email</string>
+    <string name="reg_phone">Phone</string>
+    <string name="reg_password">password</string>
+    <string name="reg_conPass">Confirm Password</string>
+    <string name="reg_submit">Submit</string>
+    <string name="reg_text">Wellcome To Registration!</string>
+    <string name="title_activity_exam">Exam</string>
+
+    <string name="e_wellcome">Wellcome ? !!</string>
+    <string name="e_startExamBTN">Start Exam</string>
+    <string name="e_notificationBTN">Notification</string>
+    <string name="e_resultBTN">Result</string>
+    <string name="e_examRuleBTN">Exam Rule</string>
+    <string name="title_activity_exam_rule">ExamRule</string>
+
+    <string name="rule_wc">BITM EXAM RULES!</string>
+    <string name="rules1">password</string>
+    <string name="rules2">password</string>
+    <string name="rules3">password</string>
+    <string name="rules4">password</string>
+    <string name="title_activity_question">Question</string>
 </resources>

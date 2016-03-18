@@ -12,15 +12,15 @@ import java.util.ArrayList;
 /**
  * Created by Mobile App Develop on 16-3-16.
  */
-public class AdapterForRegistrationList extends ArrayAdapter<RegistrationList> {
+public class AdapterForRegistrationList extends ArrayAdapter<RegistrationListMaker> {
 
-    private ArrayList<RegistrationList> registrationList;
+    private ArrayList<RegistrationListMaker> registrationListMaker;
     private Context context;
 
-    public AdapterForRegistrationList(Context context, ArrayList<RegistrationList> registrationList) {
-        super(context, R.layout.custom_row_student, registrationList);
+    public AdapterForRegistrationList(Context context, ArrayList<RegistrationListMaker> registrationListMaker) {
+        super(context, R.layout.custom_row_student, registrationListMaker);
         this.context = context;
-        this.registrationList = registrationList;
+        this.registrationListMaker = registrationListMaker;
     }
 
     static class ViewHolder {
@@ -52,9 +52,9 @@ public class AdapterForRegistrationList extends ArrayAdapter<RegistrationList> {
         }
 
 
-        viewHolder.nameTv.setText(registrationList.get(position).getUserName());
-        viewHolder.emailTv.setText(registrationList.get(position).getUserEmail());
-        viewHolder.nameId.setText(registrationList.get(position).getUserId());
+        viewHolder.nameTv.setText(registrationListMaker.get(position).getUserName());
+        viewHolder.emailTv.setText(registrationListMaker.get(position).getUserEmail());
+        viewHolder.nameId.setText(registrationListMaker.get(position).getUserId());
 
         return convertView;
     }

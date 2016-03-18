@@ -93,6 +93,16 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
                 showResult();
                 break;
             case R.id.registrationCancleBt:
+                dataBaseManager=new DataBaseManager(this);
+                boolean isRegistrationCancel=dataBaseManager.resgistrationCancel(sessionManager.getUserId());
+                if(isRegistrationCancel)
+                {
+                    Toast.makeText(this,"Registration Cancel Sucessful.....",Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(this,Login_activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                }
+                else{
+                    Toast.makeText(this,"Registration Cancel fail.....",Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.LogoutBt:
                 SessionManager sessionManager=new SessionManager(this);
@@ -103,38 +113,32 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
 
     public void answerReset(){
         DataBaseManager manager=new DataBaseManager(this);
-        ArrayList<Answer> answersset=new ArrayList<>();
+        ArrayList<AnswerSetMaker> answersset=new ArrayList<>();
 
-        Answer answer=new Answer("interface","de");
-        answersset.add(answer);
-        answer=new Answer("native","de");
-        answersset.add(answer);
-        answer=new Answer("start()","de");
-        answersset.add(answer);
-        answer=new Answer("start()","de");
-        answersset.add(answer);
-        answer=new Answer("true & false","de");
-        answersset.add(answer);
-        answer=new Answer("boolean b3 = false","de");
-        answersset.add(answer);
-        answer=new Answer("Andy Rubin","de");
-        answersset.add(answer);
-        answer=new Answer("7","de");
-        answersset.add(answer);
-        answer=new Answer("2","de");
-        answersset.add(answer);
-        answer=new Answer("Android Debug Bridge","de");
-        answersset.add(answer);
+        AnswerSetMaker answerSetMaker =new AnswerSetMaker("interface","de");
+        answersset.add(answerSetMaker);
+        answerSetMaker =new AnswerSetMaker("native","de");
+        answersset.add(answerSetMaker);
+        answerSetMaker =new AnswerSetMaker("start()","de");
+        answersset.add(answerSetMaker);
+        answerSetMaker =new AnswerSetMaker("start()","de");
+        answersset.add(answerSetMaker);
+        answerSetMaker =new AnswerSetMaker("true & false","de");
+        answersset.add(answerSetMaker);
+        answerSetMaker =new AnswerSetMaker("boolean b3 = false","de");
+        answersset.add(answerSetMaker);
+        answerSetMaker =new AnswerSetMaker("Andy Rubin","de");
+        answersset.add(answerSetMaker);
+        answerSetMaker =new AnswerSetMaker("7","de");
+        answersset.add(answerSetMaker);
+        answerSetMaker =new AnswerSetMaker("2","de");
+        answersset.add(answerSetMaker);
+        answerSetMaker =new AnswerSetMaker("Android Debug Bridge","de");
+        answersset.add(answerSetMaker);
         boolean isanswerRest=manager.addAnswer(answersset);
 
-//        //  Toast.makeText(this,""+isanswerRest,Toast.LENGTH_SHORT).show();
-//        if(isanswerRest)
-//        {
-//            Toast.makeText(this,"Add Answer Set Successful",Toast.LENGTH_SHORT).show();
-//        }
-//        else
-//            Toast.makeText(this,"Answer Set Error",Toast.LENGTH_SHORT).show();
     }
+
 
     public void showResult(){
         String mark=dataBaseManager.showStudentResult(sessionManager.getUserId());

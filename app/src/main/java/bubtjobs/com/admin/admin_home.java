@@ -1,11 +1,8 @@
 package bubtjobs.com.admin;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -80,7 +77,7 @@ public class admin_home extends AppCompatActivity implements View.OnClickListene
                 break;
 
             case R.id.question_btn:
-                addqustionSet();
+               // addqustionSet();
                 break;
 
 //            case R.id.answer_btn:
@@ -153,45 +150,13 @@ public class admin_home extends AppCompatActivity implements View.OnClickListene
 
         String isinsert=manager.addQuestion(questionSet);
         if(isinsert.equals("yes"))
-        Toast.makeText(this,"Question Set Successful",Toast.LENGTH_SHORT).show();
+            ;
+       // Toast.makeText(this,"Question Set Successful",Toast.LENGTH_SHORT).show();
         else
             Toast.makeText(this,isinsert,Toast.LENGTH_SHORT).show();
     }
 
-    public void addAnswerSet(){
-        DataBaseManager manager=new DataBaseManager(this);
-        ArrayList<Answer> answersset=new ArrayList<>();
 
-        Answer answer=new Answer("interface","de");
-        answersset.add(answer);
-        answer=new Answer("native","de");
-        answersset.add(answer);
-        answer=new Answer("start()","de");
-        answersset.add(answer);
-        answer=new Answer("start()","de");
-        answersset.add(answer);
-        answer=new Answer("true & false","de");
-        answersset.add(answer);
-        answer=new Answer("boolean b3 = false","de");
-        answersset.add(answer);
-        answer=new Answer("Andy Rubin","de");
-        answersset.add(answer);
-        answer=new Answer("7","de");
-        answersset.add(answer);
-        answer=new Answer("2","de");
-        answersset.add(answer);
-        answer=new Answer("Android Debug Bridge","de");
-        answersset.add(answer);
-        boolean isanswerRest=manager.addAnswer(answersset);
-
-        //  Toast.makeText(this,""+isanswerRest,Toast.LENGTH_SHORT).show();
-        if(isanswerRest)
-        {
-            Toast.makeText(this,"Add Answer Set Successful",Toast.LENGTH_SHORT).show();
-        }
-        else
-            Toast.makeText(this,"Answer Set Error",Toast.LENGTH_SHORT).show();
-    }
     public void examStart(){
         if(examStart_btn.getText().toString().equals("Exam Start"))
         {

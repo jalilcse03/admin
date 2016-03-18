@@ -21,8 +21,6 @@ public class AdapterForExam extends ArrayAdapter<QuestionSetMake> {
     private ArrayList<QuestionSetMake> questionList;
     private Context context;
 
-   private int mSelectedVariation=0;
-
     public AdapterForExam(Context context, ArrayList<QuestionSetMake> questionList) {
         super(context, R.layout.single_row,questionList);
         this.context=context;
@@ -37,7 +35,7 @@ public class AdapterForExam extends ArrayAdapter<QuestionSetMake> {
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
 
         if(convertView==null)
@@ -52,46 +50,35 @@ public class AdapterForExam extends ArrayAdapter<QuestionSetMake> {
             viewHolder.option2=(RadioButton)convertView.findViewById(R.id.op2);
             viewHolder.option3=(RadioButton)convertView.findViewById(R.id.op3);
             viewHolder.option4=(RadioButton)convertView.findViewById(R.id.op4);
-
-
             convertView.setTag(viewHolder);
         }
         else{
             viewHolder= (ViewHolder) convertView.getTag();
         }
 
-
-        if(position==mSelectedVariation) viewHolder.option1.setChecked(true);
-        else viewHolder.option1.setChecked(false);
-
-
-
+        viewHolder.qestionTv.setText(questionList.get(position).getQuestion());
+        viewHolder.idTv.setText(questionList.get(position).getQustionId());
+        viewHolder.option1.setText(questionList.get(position).getOp1());
+        viewHolder.option2.setText(questionList.get(position).getOp2());
+        viewHolder.option3.setText(questionList.get(position).getOp3());
+        viewHolder.option4.setText(questionList.get(position).getOp4());
 
         viewHolder.option1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String t =dataBaseManager.updateAnswer(viewHolder.idTv.getText().toString(),viewHolder.option1.getText().toString());
-                mSelectedVariation = position;
-                AdapterForExam.this.notifyDataSetChanged();
             }
         });
-
-
-
         viewHolder.option2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String t =dataBaseManager.updateAnswer(viewHolder.idTv.getText().toString(),viewHolder.option2.getText().toString());
-               // Toast.makeText(context,""+viewHolder.option2.getText().toString()+"ID: "+viewHolder.idTv.getText().toString(),Toast.LENGTH_SHORT).show();
             }
         });
         viewHolder.option3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String t =dataBaseManager.updateAnswer(viewHolder.idTv.getText().toString(),viewHolder.option3.getText().toString());
-
             }
         });
         viewHolder.option4.setOnClickListener(new View.OnClickListener() {

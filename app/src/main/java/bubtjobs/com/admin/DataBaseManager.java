@@ -2,14 +2,10 @@ package bubtjobs.com.admin;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.AsyncTask;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Murtuza on 3/15/2016.
@@ -62,14 +58,14 @@ public class DataBaseManager {
         }
     }
 
-    public boolean addAnswer(ArrayList<Answer> arrayList){
+    public boolean addAnswer(ArrayList<AnswerSetMaker> arrayList){
         try{
             this.open();
             database.execSQL("DROP TABLE IF EXISTS " + DataBaseHelper.TABLE_ANSWER);
 
             database.execSQL(DataBaseHelper.CREATE_TABLE_ANSWER);
 
-            for(Answer obj:arrayList)
+            for(AnswerSetMaker obj:arrayList)
             {
                 ContentValues contentValues = new ContentValues();
                 contentValues.put(DataBaseHelper.ANS_KEY,obj.getKey());
@@ -252,9 +248,9 @@ public class DataBaseManager {
 
  /************************************* view student list admin **********************/
 
-    public ArrayList<RegistrationList> getRegistrationList(){
-        RegistrationList registrationList=new RegistrationList();
-        ArrayList<RegistrationList> list=new ArrayList<>();
+    public ArrayList<RegistrationListMaker> getRegistrationList(){
+        RegistrationListMaker registrationListMaker =new RegistrationListMaker();
+        ArrayList<RegistrationListMaker> list=new ArrayList<>();
         try {
             this.open();
             String sql = "select * from " + DataBaseHelper.TABLE_STUDENTINFO + " where " + DataBaseHelper.USER_STATUS + " = 'active' ";
@@ -268,8 +264,8 @@ public class DataBaseManager {
                     String email = cursor.getString(cursor.getColumnIndex(DataBaseHelper.EMAIL));
                     String id = cursor.getString(cursor.getColumnIndex(DataBaseHelper.COL_ID));
 
-                    registrationList = new RegistrationList(name, email, id);
-                    list.add(registrationList);
+                    registrationListMaker = new RegistrationListMaker(name, email, id);
+                    list.add(registrationListMaker);
                     cursor.moveToNext();
                 }
             }
@@ -447,5 +443,16 @@ public class DataBaseManager {
         }
         return "0";
 
+    }
+    /***************************** resgistration cancel ********************************************/
+    public boolean resgistrationCancel(String id){
+        this.open();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DataBaseHelper.USER_STATUS,"inactive");
+        int updated = database.update(DataBaseHelper.TABLE_STUDENTINFO, contentValues, DataBaseHelper.COL_ID + " = "+id , null);
+        this.close();
+        if (updated > 0) {
+            return true;
+        } else return false;
     }
 }
