@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
-    android:gravity="center"
     >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".1"
+        android:gravity="right"
+        android:paddingRight="10dp"
+        >
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/refresh"
+            android:onClick="refreshOperation"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="20dp"
+        >
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,15 +36,16 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Exam"
-        android:id="@+id/examBt"
+        android:text="Exam Rule"
+        android:id="@+id/examRuleBt"
         />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Exam Rule"
-        android:id="@+id/examRuleBt"
+        android:text="Exam"
+        android:id="@+id/examBt"
         />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,5 +64,5 @@
         android:text="Logout"
         android:id="@+id/LogoutBt"
         />
-
+    </LinearLayout>
 </LinearLayout>

@@ -6,6 +6,7 @@
     <string name="add_question_btn">Add Question</string>
     <string name="add_answer_btn">Add Answer</string>
     <string name="result_publish_btn">Result Publish</string>
+    <string name="examDuration_btn">Set Exam Duration</string>
 
     <string name="exam_start_btn">Exam Start</string>
     <string name="logout_btn">Logout</string>

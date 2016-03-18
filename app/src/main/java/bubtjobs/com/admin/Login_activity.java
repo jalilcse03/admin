@@ -7,22 +7,30 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.Externalizable;
-
 public class Login_activity extends AppCompatActivity {
     EditText userEmail, userPassword;
-
+    AlertDialogManager alertDialogManager;
+    String isRegistrationSuccess="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
 
+        alertDialogManager=new AlertDialogManager();
+
         userEmail = (EditText) findViewById(R.id.userEmailEt);
         userPassword = (EditText) findViewById(R.id.userPasswordEt);
+
+        isRegistrationSuccess =getIntent().getStringExtra("success");
+        if(isRegistrationSuccess!=null && isRegistrationSuccess.equals("success"))
+        {
+            alertDialogManager.showAlertDialog(this, "Success....", "Registration Successfully completed", true);
+        }
+
     }
 
     public void creatAccount(View view) {
-        startActivity(new Intent(this, CreateAccount.class));
+        startActivity(new Intent(this, Registration.class));
     }
 
     public void loginBt(View view) {
@@ -37,7 +45,7 @@ public class Login_activity extends AppCompatActivity {
 
                 String result = dataBaseManager.login(userEmail.getText().toString(), userPassword.getText().toString());
                 if (result.equals("no") || result.equals("error")) {
-                    Toast.makeText(Login_activity.this, result, Toast.LENGTH_SHORT).show();
+                    alertDialogManager.showAlertDialog(this, "Login failed....", "Unauthorized User, Please Check your email and password", true);
 
                 } else {
 

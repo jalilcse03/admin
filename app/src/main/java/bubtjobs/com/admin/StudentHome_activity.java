@@ -14,6 +14,7 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
     Button notificationBt,examBt,examRuleBt,resultBt,registrationCancleBt,LogoutBt;
     DataBaseManager dataBaseManager;
     SessionManager sessionManager;
+    AlertDialogManager alertDialogManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +22,8 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
 
         dataBaseManager=new DataBaseManager(this);
         sessionManager=new SessionManager(this);
+        alertDialogManager=new AlertDialogManager();
+
 
         notificationBt=(Button)findViewById(R.id.notificationBt);
         examBt=(Button)findViewById(R.id.examBt);
@@ -74,7 +77,7 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
         {
             case R.id.notificationBt:
                 dataBaseManager.studentUpdataNotificationStatus(sessionManager.getUserId());
-                startActivity(new Intent(this, Notification_activity.class));
+                startActivity(new Intent(this, NotificationReceiveStudent.class));
 
             break;
             case R.id.examBt:
@@ -88,6 +91,7 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
 
                 break;
             case R.id.examRuleBt:
+                startActivity(new Intent(this, ExamRule.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 break;
             case R.id.resultBt:
                 showResult();
@@ -142,6 +146,17 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
 
     public void showResult(){
         String mark=dataBaseManager.showStudentResult(sessionManager.getUserId());
-        Toast.makeText(this,""+mark,Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this,""+mark,Toast.LENGTH_SHORT).show();
+        if(Integer.parseInt(mark)>=6)
+        alertDialogManager.showAlertDialog(this, "Result....", "You got: "+mark+"\n Status: pass", true);
+        else{
+            alertDialogManager.showAlertDialog(this, "Result....", "You got: "+mark+"\nStatus: fail. At least 6 marks need to pass", true);
+        }
+    }
+
+    public void refreshOperation(View view)
+    {
+        //Toast.makeText(this,"ii",Toast.LENGTH_LONG).show();
+        startActivity(new Intent(StudentHome_activity.this, StudentHome_activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 }

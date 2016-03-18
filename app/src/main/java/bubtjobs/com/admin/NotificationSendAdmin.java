@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Message_activity extends AppCompatActivity {
+public class NotificationSendAdmin extends AppCompatActivity {
     EditText message;
     CommonFunction function;
     @Override
@@ -27,7 +27,8 @@ public class Message_activity extends AppCompatActivity {
             if(result.equals("yes"))
             {
                 boolean b=manager.notificationStatusChange();
-                Toast.makeText(this,"Notification Sent "+b,Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Notification Sent ",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this,admin_home.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
             else
                 Toast.makeText(this,result,Toast.LENGTH_LONG).show();

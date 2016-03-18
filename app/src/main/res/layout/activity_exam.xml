@@ -5,14 +5,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Time"
         android:id="@+id/time"
-        android:gravity="center"
         android:textStyle="bold"
-        />
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/back_btn"
+            android:src="@drawable/backbtn"
+            android:layout_gravity="end"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
 <ListView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

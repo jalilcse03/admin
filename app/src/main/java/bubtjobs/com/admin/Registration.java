@@ -7,9 +7,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class CreateAccount extends AppCompatActivity {
+public class Registration extends AppCompatActivity {
 
     EditText nameEt,userEmailEt,passwordEt,userConPasswordET;
+    AlertDialogManager alertDialogManager;
    // DataBaseManager dataBaseManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +18,7 @@ public class CreateAccount extends AppCompatActivity {
         setContentView(R.layout.registration_activity);
 
        // dataBaseManager=new DataBaseManager(this);
-
+        alertDialogManager=new AlertDialogManager();
         nameEt=(EditText)findViewById(R.id.userNameEt);
         userEmailEt=(EditText)findViewById(R.id.userEmailEt);
         passwordEt=(EditText)findViewById(R.id.userPasswordEt);
@@ -32,21 +33,20 @@ public class CreateAccount extends AppCompatActivity {
 
                 String restul = dataBaseManager.creatAccount(nameEt.getText().toString(), userEmailEt.getText().toString(), passwordEt.getText().toString());
                 if (restul.equals("yes")) {
-                    Toast.makeText(CreateAccount.this, "Create Account Successfull", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(this, Login_activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                } else if (restul.equals("emial exist")) {
-                    Toast.makeText(CreateAccount.this, "Email Already Exist.....", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, Login_activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra("success","success"));
+                } else if (restul.equals("email exist")) {
+                    alertDialogManager.showAlertDialog(this, "Error....", "Email Already Exist.....", true);
                 } else {
-                    Toast.makeText(CreateAccount.this, restul, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registration.this, restul, Toast.LENGTH_SHORT).show();
                 }
             }
             else{
-                Toast.makeText(CreateAccount.this,"Password and Confirm password must be same",Toast.LENGTH_SHORT).show();
+                alertDialogManager.showAlertDialog(this, "Error....", "Password and Confirm password must be same", true);
             }
         }
         else
         {
-            Toast.makeText(CreateAccount.this,"Insert All Field",Toast.LENGTH_SHORT).show();
+            Toast.makeText(Registration.this,"Insert All Field",Toast.LENGTH_SHORT).show();
         }
     }
 }

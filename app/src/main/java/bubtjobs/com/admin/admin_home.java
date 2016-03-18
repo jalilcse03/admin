@@ -10,7 +10,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class admin_home extends AppCompatActivity implements View.OnClickListener{
-    Button resgistrationList_btn,notification_btn,question_btn,answer_btn,resultPublisBt,logout_btn,examStart_btn;
+    Button resgistrationList_btn,notification_btn,examDuration_btn,resultPublisBt,logout_btn,examStart_btn;
 
     DataBaseManager manager;
     SessionManager sessionManager;
@@ -20,14 +20,11 @@ public class admin_home extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_admin_home);
 
         init();
-
-
     }
     public void init(){
         resgistrationList_btn=(Button)findViewById(R.id.resgistrationList_btn);
         notification_btn=(Button)findViewById(R.id.notification_btn);
-        question_btn=(Button)findViewById(R.id.question_btn);
-        //answer_btn=(Button)findViewById(R.id.answer_btn);
+        examDuration_btn=(Button)findViewById(R.id.examDuration_btn);
         examStart_btn=(Button)findViewById(R.id.examStart_btn);
         resultPublisBt=(Button)findViewById(R.id.resultPublisBt);
         logout_btn=(Button)findViewById(R.id.logout_btn);
@@ -42,7 +39,6 @@ public class admin_home extends AppCompatActivity implements View.OnClickListene
             examStart_btn.setText(text);
 
         manager=new DataBaseManager(this);
-
         // result publish button
 
         if(sessionManager.getResult().equals("yes"))
@@ -55,8 +51,7 @@ public class admin_home extends AppCompatActivity implements View.OnClickListene
 
         resgistrationList_btn.setOnClickListener(this);
         notification_btn.setOnClickListener(this);
-        question_btn.setOnClickListener(this);
-       // answer_btn.setOnClickListener(this);
+        examDuration_btn.setOnClickListener(this);
         examStart_btn.setOnClickListener(this);
         resultPublisBt.setOnClickListener(this);
         logout_btn.setOnClickListener(this);
@@ -68,21 +63,16 @@ public class admin_home extends AppCompatActivity implements View.OnClickListene
         switch (v.getId())
         {
             case R.id.resgistrationList_btn:
-                //Toast.makeText(this,"ok",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this,RegistrationList_activity.class));
                 break;
 
             case R.id.notification_btn:
-                startActivity(new Intent(this,Message_activity.class));
+                startActivity(new Intent(this,NotificationSendAdmin.class));
                 break;
 
-            case R.id.question_btn:
-               // addqustionSet();
+            case R.id.examDuration_btn:
+                startActivity(new Intent(this,ExamDuration.class));
                 break;
-
-//            case R.id.answer_btn:
-//                addAnswerSet();
-//                break;
             case R.id.examStart_btn:
                 addqustionSet();
                examStart();

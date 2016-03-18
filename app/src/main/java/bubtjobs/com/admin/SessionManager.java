@@ -28,7 +28,10 @@ public class SessionManager {
 
 	// result publish
 	public static final String RESULT_PUBLISH="result_publish";
-	
+
+	// exam duration
+	public static final String EXAM_DURATION="exam_duration";
+
 	//constructor
 	public SessionManager(Context _context) {
 		this._context = _context;
@@ -88,6 +91,17 @@ public class SessionManager {
 
 	public void setResult(String s){
 		editor.putString(RESULT_PUBLISH,s);
+		editor.commit();
+	}
+
+	// exam duration
+
+	public double getExamDuration(){
+		return  Double.parseDouble(perf.getString(EXAM_DURATION,"1"))*60000;
+
+	}
+	public void setExamDuration(String time){
+		editor.putString(EXAM_DURATION,time);
 		editor.commit();
 	}
 

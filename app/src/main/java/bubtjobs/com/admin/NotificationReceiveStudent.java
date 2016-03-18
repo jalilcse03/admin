@@ -6,7 +6,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class Notification_activity extends AppCompatActivity {
+public class NotificationReceiveStudent extends AppCompatActivity {
     ListView listView;
     ArrayList<String> list;
     DataBaseManager manager;

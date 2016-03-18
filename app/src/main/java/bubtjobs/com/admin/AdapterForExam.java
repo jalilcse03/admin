@@ -5,10 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -22,7 +20,7 @@ public class AdapterForExam extends ArrayAdapter<QuestionSetMake> {
     private Context context;
 
     public AdapterForExam(Context context, ArrayList<QuestionSetMake> questionList) {
-        super(context, R.layout.single_row,questionList);
+        super(context, R.layout.question_set_custom_row,questionList);
         this.context=context;
         this.questionList=questionList;
         dataBaseManager=new DataBaseManager(context);
@@ -41,7 +39,7 @@ public class AdapterForExam extends ArrayAdapter<QuestionSetMake> {
         if(convertView==null)
         {
             LayoutInflater layoutInflater= (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView=layoutInflater.inflate(R.layout.single_row,null);
+            convertView=layoutInflater.inflate(R.layout.question_set_custom_row,null);
 
             viewHolder=new ViewHolder();
             viewHolder.qestionTv=(TextView)convertView.findViewById(R.id.qestionTv);
