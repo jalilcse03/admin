@@ -7,11 +7,20 @@
     <string name="add_answer_btn">Add Answer</string>
     <string name="result_publish_btn">Result Publish</string>
     <string name="examDuration_btn">Set Exam Duration</string>
+    <string name="addQuestion_btn">Add Question</string>
 
     <string name="exam_start_btn">Exam Start</string>
     <string name="logout_btn">Logout</string>
+    <string name="settime_btn">Set Time</string>
+
     <string name="title_activity_registration_list_activity">RegistrationList_activity</string>
 
+    <!-- hint -->
+    <string name="hint_exam_duration">Set Exam Duration In Minute</string>
+    <string name="hint_write_something">Write something here.....</string>
+    <string name="hint_userName">User Name</string>
+    <string name="hint_user_email">User Email</string>
+    <string name="hint_password">User Password</string>
 
     <!-- tarikul vai code-->
     <string name="email_hint">Email</string>

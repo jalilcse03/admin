@@ -28,6 +28,7 @@
         <activity android:name=".Activity.ExamPage" />
         <activity android:name=".Activity.ExamRule" />
         <activity android:name=".Activity.SetExamDuration"></activity>
+        <activity android:name=".Activity.AddQuestion"></activity>
     </application>
 
 </manifest>

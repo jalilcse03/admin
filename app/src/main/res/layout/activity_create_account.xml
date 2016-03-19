@@ -11,20 +11,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/userNameEt"
-        android:hint="User Name"
+        android:hint="@string/hint_userName"
+        android:singleLine="true"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/userEmailEt"
-        android:hint="User Email"
+        android:hint="@string/hint_user_email"
+        android:singleLine="true"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/userPasswordEt"
-        android:hint="User Password"
+        android:hint="@string/hint_password"
         android:inputType="textPassword"
+        android:singleLine="true"
         />
     <Button
         android:layout_width="wrap_content"

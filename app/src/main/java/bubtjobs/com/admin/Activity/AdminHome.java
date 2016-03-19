@@ -15,7 +15,7 @@ import bubtjobs.com.admin.R;
 import bubtjobs.com.admin.Others.SessionManager;
 
 public class AdminHome extends AppCompatActivity implements View.OnClickListener{
-    Button resgistrationList_btn,notification_btn,examDuration_btn,resultPublisBt,logout_btn,examStart_btn;
+    Button resgistrationList_btn,notification_btn,examDuration_btn,resultPublisBt,logout_btn,examStart_btn,addQuestionBt;
 
     DataBaseManager manager;
     SessionManager sessionManager;
@@ -33,6 +33,7 @@ public class AdminHome extends AppCompatActivity implements View.OnClickListener
         examDuration_btn=(Button)findViewById(R.id.examDuration_btn);
         examStart_btn=(Button)findViewById(R.id.examStart_btn);
         resultPublisBt=(Button)findViewById(R.id.resultPublisBt);
+        addQuestionBt=(Button)findViewById(R.id.addQuestionBt);
         logout_btn=(Button)findViewById(R.id.logout_btn);
 
         sessionManager=new SessionManager(this);
@@ -60,6 +61,7 @@ public class AdminHome extends AppCompatActivity implements View.OnClickListener
         examDuration_btn.setOnClickListener(this);
         examStart_btn.setOnClickListener(this);
         resultPublisBt.setOnClickListener(this);
+        addQuestionBt.setOnClickListener(this);
         logout_btn.setOnClickListener(this);
     }
 
@@ -100,7 +102,9 @@ public class AdminHome extends AppCompatActivity implements View.OnClickListener
                     resultPublisBt.setText("Result Publish");
                 }
                 break;
-
+            case R.id.addQuestionBt:
+                startActivity(new Intent(this,AddQuestion.class));
+                break;
             case R.id.logout_btn:
                 startActivity(new Intent(this,Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 break;

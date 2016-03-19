@@ -47,6 +47,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/addQuestion_btn"
+        android:id="@+id/addQuestionBt"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/logout_btn"
         android:id="@+id/logout_btn"
         />

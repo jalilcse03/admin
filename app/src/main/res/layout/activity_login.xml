@@ -37,14 +37,18 @@
             android:id="@+id/userEmailEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/email_hint" />
+            android:hint="@string/email_hint"
+            android:singleLine="true"
+            />
 
         <EditText
             android:id="@+id/userPasswordEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:hint="@string/password_hint" />
+            android:hint="@string/password_hint"
+            android:singleLine="true"
+            />
 
         <Button
             android:id="@+id/loginButton"

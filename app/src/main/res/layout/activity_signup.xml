@@ -37,27 +37,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/reg_name"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:singleLine="true"
+            />
 
         <EditText
             android:id="@+id/userEmailEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/reg_email" />
+            android:hint="@string/reg_email"
+            android:singleLine="true"
+            />
 
         <EditText
             android:id="@+id/userPasswordEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/reg_password"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:singleLine="true"
+            />
 
         <EditText
             android:id="@+id/userConPasswordET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/reg_conPass"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:singleLine="true"
+            />
         <Button
             android:id="@+id/loginButton"
             android:layout_width="250dp"
