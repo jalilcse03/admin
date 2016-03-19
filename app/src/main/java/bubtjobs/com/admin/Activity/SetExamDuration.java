@@ -1,4 +1,4 @@
-package bubtjobs.com.admin;
+package bubtjobs.com.admin.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class ExamDuration extends AppCompatActivity {
+import bubtjobs.com.admin.Others.CommonFunction;
+import bubtjobs.com.admin.R;
+import bubtjobs.com.admin.Others.SessionManager;
+
+public class SetExamDuration extends AppCompatActivity {
     EditText timeEd;
     SessionManager sessionManager;
     CommonFunction commonFunction;
@@ -15,7 +19,7 @@ public class ExamDuration extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exam_duration);
+        setContentView(R.layout.activity_set_exam_duration);
 
         sessionManager=new SessionManager(this);
         commonFunction=new CommonFunction();
@@ -27,8 +31,8 @@ public class ExamDuration extends AppCompatActivity {
        if(commonFunction.isEmpty(timeEd))
        {
            sessionManager.setExamDuration(timeEd.getText().toString());
-           Toast.makeText(this,"Exam Duration Set Successfully ",Toast.LENGTH_LONG).show();
-          startActivity(new Intent(this,admin_home.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+           Toast.makeText(this,"ExamPage Duration Set Successfully ",Toast.LENGTH_LONG).show();
+          startActivity(new Intent(this,AdminHome.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
        }
         else{
            timeEd.setError("Field is Empty");

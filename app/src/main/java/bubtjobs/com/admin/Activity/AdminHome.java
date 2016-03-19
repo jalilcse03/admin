@@ -1,4 +1,4 @@
-package bubtjobs.com.admin;
+package bubtjobs.com.admin.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +9,12 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class admin_home extends AppCompatActivity implements View.OnClickListener{
+import bubtjobs.com.admin.DataBase.DataBaseManager;
+import bubtjobs.com.admin.Getter_Setter.QuestionSetMake;
+import bubtjobs.com.admin.R;
+import bubtjobs.com.admin.Others.SessionManager;
+
+public class AdminHome extends AppCompatActivity implements View.OnClickListener{
     Button resgistrationList_btn,notification_btn,examDuration_btn,resultPublisBt,logout_btn,examStart_btn;
 
     DataBaseManager manager;
@@ -63,15 +68,15 @@ public class admin_home extends AppCompatActivity implements View.OnClickListene
         switch (v.getId())
         {
             case R.id.resgistrationList_btn:
-                startActivity(new Intent(this,RegistrationList_activity.class));
+                startActivity(new Intent(this,ShowRegistrationList.class));
                 break;
 
             case R.id.notification_btn:
-                startActivity(new Intent(this,NotificationSendAdmin.class));
+                startActivity(new Intent(this,AdminSendNotification.class));
                 break;
 
             case R.id.examDuration_btn:
-                startActivity(new Intent(this,ExamDuration.class));
+                startActivity(new Intent(this,SetExamDuration.class));
                 break;
             case R.id.examStart_btn:
                 addqustionSet();
@@ -96,7 +101,7 @@ public class admin_home extends AppCompatActivity implements View.OnClickListene
                 break;
 
             case R.id.logout_btn:
-                startActivity(new Intent(this,Login_activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(this,Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 break;
         }
     }

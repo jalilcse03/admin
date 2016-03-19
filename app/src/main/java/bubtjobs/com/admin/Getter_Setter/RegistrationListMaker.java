@@ -1,4 +1,4 @@
-package bubtjobs.com.admin;
+package bubtjobs.com.admin.Getter_Setter;
 
 /**
  * Created by Mobile App Develop on 16-3-16.

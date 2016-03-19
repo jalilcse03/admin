@@ -1,4 +1,4 @@
-package bubtjobs.com.admin;
+package bubtjobs.com.admin.Others;
 
 import android.app.AlertDialog;
 import android.content.Context;

@@ -1,10 +1,11 @@
-package bubtjobs.com.admin;
+package bubtjobs.com.admin.Others;
 
-import java.util.HashMap;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+
+import bubtjobs.com.admin.Activity.Login;
 
 public class SessionManager {
 	//shared preference
@@ -64,7 +65,7 @@ public class SessionManager {
         editor.commit();
          
         // After logout redirect user to Loing Activity
-        Intent i = new Intent(_context, Login_activity.class);
+        Intent i = new Intent(_context, Login.class);
         // Closing all the Activities
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
          

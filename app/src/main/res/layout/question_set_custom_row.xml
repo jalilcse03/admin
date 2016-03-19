@@ -35,8 +35,8 @@
             android:id="@+id/op1"
             android:text="option1"
             android:textColor="#000"
-            android:clickable="false"
-            android:focusable="false"
+            android:checked="false"
+            android:editable="true"
             />
         <RadioButton
             android:layout_width="wrap_content"
@@ -44,6 +44,8 @@
             android:id="@+id/op2"
             android:text="option1"
             android:textColor="#000"
+            android:checked="false"
+            android:editable="true"
             />
         <RadioButton
             android:layout_width="wrap_content"
@@ -51,6 +53,8 @@
             android:id="@+id/op3"
             android:text="option1"
             android:textColor="#000"
+            android:checked="false"
+            android:editable="true"
             />
         <RadioButton
             android:layout_width="wrap_content"
@@ -58,6 +62,17 @@
             android:id="@+id/op4"
             android:text="option1"
             android:textColor="#000"
+            android:checked="false"
+            android:editable="true"
+            />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/op5"
+            android:textColor="#000"
+            android:checked="false"
+            android:editable="true"
+            android:visibility="gone"
             />
     </RadioGroup>
 </LinearLayout>

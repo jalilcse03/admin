@@ -1,4 +1,4 @@
-package bubtjobs.com.admin;
+package bubtjobs.com.admin.Activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,7 +10,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class StudentHome_activity extends AppCompatActivity implements View.OnClickListener{
+import bubtjobs.com.admin.Others.AlertDialogManager;
+import bubtjobs.com.admin.Getter_Setter.AnswerSetMaker;
+import bubtjobs.com.admin.DataBase.DataBaseManager;
+import bubtjobs.com.admin.R;
+import bubtjobs.com.admin.Others.SessionManager;
+
+public class StudentHome extends AppCompatActivity implements View.OnClickListener{
     Button notificationBt,examBt,examRuleBt,resultBt,registrationCancleBt,LogoutBt;
     DataBaseManager dataBaseManager;
     SessionManager sessionManager;
@@ -18,7 +24,7 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_home_activity);
+        setContentView(R.layout.activity_student_home);
 
         dataBaseManager=new DataBaseManager(this);
         sessionManager=new SessionManager(this);
@@ -77,7 +83,7 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
         {
             case R.id.notificationBt:
                 dataBaseManager.studentUpdataNotificationStatus(sessionManager.getUserId());
-                startActivity(new Intent(this, NotificationReceiveStudent.class));
+                startActivity(new Intent(this, StudentNotification.class));
 
             break;
             case R.id.examBt:
@@ -85,7 +91,7 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
                 if(isExamStatusUpdate)
                 {
                     answerReset();
-                    startActivity(new Intent(this,Exam.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    startActivity(new Intent(this,ExamPage.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 
                 }
 
@@ -101,11 +107,11 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
                 boolean isRegistrationCancel=dataBaseManager.resgistrationCancel(sessionManager.getUserId());
                 if(isRegistrationCancel)
                 {
-                    Toast.makeText(this,"Registration Cancel Sucessful.....",Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(this,Login_activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    Toast.makeText(this,"SignUp Cancel Sucessful.....",Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(this,Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 }
                 else{
-                    Toast.makeText(this,"Registration Cancel fail.....",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,"SignUp Cancel fail.....",Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.LogoutBt:
@@ -157,6 +163,6 @@ public class StudentHome_activity extends AppCompatActivity implements View.OnCl
     public void refreshOperation(View view)
     {
         //Toast.makeText(this,"ii",Toast.LENGTH_LONG).show();
-        startActivity(new Intent(StudentHome_activity.this, StudentHome_activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        startActivity(new Intent(StudentHome.this, StudentHome.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 }

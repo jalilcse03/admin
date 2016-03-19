@@ -1,4 +1,4 @@
-package bubtjobs.com.admin;
+package bubtjobs.com.admin.Others;
 
 import android.text.TextUtils;
 import android.widget.EditText;

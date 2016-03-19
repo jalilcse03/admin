@@ -1,4 +1,4 @@
-package bubtjobs.com.admin;
+package bubtjobs.com.admin.Activity;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -8,7 +8,6 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Checkable;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,7 +16,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-public class Exam extends AppCompatActivity {
+import bubtjobs.com.admin.Adapter.ExamAdapter;
+import bubtjobs.com.admin.DataBase.DataBaseManager;
+import bubtjobs.com.admin.Getter_Setter.QuestionSetMake;
+import bubtjobs.com.admin.R;
+import bubtjobs.com.admin.Others.SessionManager;
+
+public class ExamPage extends AppCompatActivity {
 
     DataBaseManager dataBaseManager;
     SessionManager sessionManager;
@@ -28,7 +33,7 @@ public class Exam extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exam);
+        setContentView(R.layout.activity_exam_page);
 
         timeTv = (TextView) findViewById(R.id.time);
         back_btn = (ImageButton) findViewById(R.id.back_btn);
@@ -44,10 +49,10 @@ public class Exam extends AppCompatActivity {
 
         questions = dataBaseManager.getAllQuestion();
         if (questions != null) {
-            AdapterForExam adapter = new AdapterForExam(getApplicationContext(), questions);
+            ExamAdapter adapter = new ExamAdapter(getApplicationContext(), questions);
             listView.setAdapter(adapter);
         } else {
-            Toast.makeText(Exam.this, "Error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ExamPage.this, "Error", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -62,7 +67,7 @@ public class Exam extends AppCompatActivity {
                 timeTv.setText("finish: ");
                 int result = dataBaseManager.result();
                 dataBaseManager.studentResultUpdate(sessionManager.getUserId(), "" + result);
-                startActivity(new Intent(Exam.this, StudentHome_activity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(ExamPage.this, StudentHome.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 
             }
         });
@@ -97,7 +102,7 @@ public class Exam extends AppCompatActivity {
             timeTv.setText("finish: ");
             int result = dataBaseManager.result();
             dataBaseManager.studentResultUpdate(sessionManager.getUserId(), "" + result);
-            startActivity(new Intent(Exam.this, StudentHome_activity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            startActivity(new Intent(ExamPage.this, StudentHome.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 
         }
     }

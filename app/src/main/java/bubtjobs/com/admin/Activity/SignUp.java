@@ -1,4 +1,4 @@
-package bubtjobs.com.admin;
+package bubtjobs.com.admin.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Registration extends AppCompatActivity {
+import bubtjobs.com.admin.Others.AlertDialogManager;
+import bubtjobs.com.admin.DataBase.DataBaseManager;
+import bubtjobs.com.admin.R;
+
+public class SignUp extends AppCompatActivity {
 
     EditText nameEt,userEmailEt,passwordEt,userConPasswordET;
     AlertDialogManager alertDialogManager;
@@ -15,7 +19,7 @@ public class Registration extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registration_activity);
+        setContentView(R.layout.activity_signup);
 
        // dataBaseManager=new DataBaseManager(this);
         alertDialogManager=new AlertDialogManager();
@@ -33,11 +37,11 @@ public class Registration extends AppCompatActivity {
 
                 String restul = dataBaseManager.creatAccount(nameEt.getText().toString(), userEmailEt.getText().toString(), passwordEt.getText().toString());
                 if (restul.equals("yes")) {
-                    startActivity(new Intent(this, Login_activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra("success","success"));
+                    startActivity(new Intent(this, Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra("success","success"));
                 } else if (restul.equals("email exist")) {
                     alertDialogManager.showAlertDialog(this, "Error....", "Email Already Exist.....", true);
                 } else {
-                    Toast.makeText(Registration.this, restul, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, restul, Toast.LENGTH_SHORT).show();
                 }
             }
             else{
@@ -46,7 +50,7 @@ public class Registration extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(Registration.this,"Insert All Field",Toast.LENGTH_SHORT).show();
+            Toast.makeText(SignUp.this,"Insert All Field",Toast.LENGTH_SHORT).show();
         }
     }
 }

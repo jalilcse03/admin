@@ -1,4 +1,4 @@
-package bubtjobs.com.admin;
+package bubtjobs.com.admin.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,15 +9,17 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import bubtjobs.com.admin.R;
+
 /**
  * Created by Murtuza on 3/17/2016.
  */
-public class AdapterForNotification extends ArrayAdapter<String> {
+public class NotificationAdapter extends ArrayAdapter<String> {
 
     private ArrayList<String> list;
     private Context context;
 
-    public AdapterForNotification(Context context, ArrayList<String> list) {
+    public NotificationAdapter(Context context, ArrayList<String> list) {
         super(context, R.layout.notification_customs_rom, list);
         this.context = context;
         this.list = list;

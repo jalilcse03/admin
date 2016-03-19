@@ -1,9 +1,11 @@
-package bubtjobs.com.admin;
+package bubtjobs.com.admin.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import bubtjobs.com.admin.R;
 
 public class ExamRule extends AppCompatActivity {
 
@@ -14,6 +16,6 @@ public class ExamRule extends AppCompatActivity {
     }
     public void backOperation(View view)
     {
-        startActivity(new Intent(this,StudentHome_activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        startActivity(new Intent(this,StudentHome.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 }

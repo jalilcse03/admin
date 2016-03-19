@@ -1,4 +1,4 @@
-package bubtjobs.com.admin;
+package bubtjobs.com.admin.DataBase;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,6 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import bubtjobs.com.admin.DataBase.DataBaseHelper;
+import bubtjobs.com.admin.Getter_Setter.AnswerSetMaker;
+import bubtjobs.com.admin.Getter_Setter.QuestionSetMake;
+import bubtjobs.com.admin.Getter_Setter.RegistrationListMaker;
 
 /**
  * Created by Murtuza on 3/15/2016.
@@ -384,7 +390,7 @@ public class DataBaseManager {
             return true;
         } else return false;
     }
-    /************************************* Exam Status update **************************/
+    /************************************* ExamPage Status update **************************/
     public boolean studentExamStatusUpdate(String id){
         this.open();
 
@@ -449,10 +455,38 @@ public class DataBaseManager {
         this.open();
         ContentValues contentValues = new ContentValues();
         contentValues.put(DataBaseHelper.USER_STATUS,"inactive");
-        int updated = database.update(DataBaseHelper.TABLE_STUDENTINFO, contentValues, DataBaseHelper.COL_ID + " = "+id , null);
+        int updated = database.update(DataBaseHelper.TABLE_STUDENTINFO, contentValues, DataBaseHelper.COL_ID + " = " + id, null);
         this.close();
         if (updated > 0) {
             return true;
         } else return false;
     }
+   /*********************************** answer retrive **********************************/
+    public HashMap<String,String> answerRetrive(int position)
+    {
+        HashMap<String,String> hashMap=new HashMap<>();
+        try {
+            this.open();
+            String sql = "select * from " + DataBaseHelper.TABLE_ANSWER + " where " + DataBaseHelper.COL_ID + " = " + position;
+            Cursor cursor = database.rawQuery(sql, null);
+            cursor.moveToFirst();
+            if (cursor != null && cursor.getCount() > 0) {
+                String pos = cursor.getString(cursor.getColumnIndex(DataBaseHelper.COL_ID));
+                String value = cursor.getString(cursor.getColumnIndex(DataBaseHelper.ANS_VALUE));
+                hashMap.put("index",pos);
+                hashMap.put("value",value);
+                this.close();
+                return hashMap;
+            }
+        }
+        catch (Exception e){
+            this.close();
+            return hashMap;
+        }
+        return  hashMap;
+        }
+
+
+
+
 }

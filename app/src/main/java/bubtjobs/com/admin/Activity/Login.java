@@ -1,4 +1,4 @@
-package bubtjobs.com.admin;
+package bubtjobs.com.admin.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,14 +7,19 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Login_activity extends AppCompatActivity {
+import bubtjobs.com.admin.Others.AlertDialogManager;
+import bubtjobs.com.admin.DataBase.DataBaseManager;
+import bubtjobs.com.admin.R;
+import bubtjobs.com.admin.Others.SessionManager;
+
+public class Login extends AppCompatActivity {
     EditText userEmail, userPassword;
     AlertDialogManager alertDialogManager;
     String isRegistrationSuccess="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login2);
+        setContentView(R.layout.activity_login);
 
         alertDialogManager=new AlertDialogManager();
 
@@ -24,13 +29,13 @@ public class Login_activity extends AppCompatActivity {
         isRegistrationSuccess =getIntent().getStringExtra("success");
         if(isRegistrationSuccess!=null && isRegistrationSuccess.equals("success"))
         {
-            alertDialogManager.showAlertDialog(this, "Success....", "Registration Successfully completed", true);
+            alertDialogManager.showAlertDialog(this, "Success....", "SignUp Successfully completed", true);
         }
 
     }
 
     public void creatAccount(View view) {
-        startActivity(new Intent(this, Registration.class));
+        startActivity(new Intent(this, SignUp.class));
     }
 
     public void loginBt(View view) {
@@ -38,7 +43,7 @@ public class Login_activity extends AppCompatActivity {
 
             // admin login static part
             if (userEmail.getText().toString().equals("admin") && userPassword.getText().toString().equals("admin")) {
-                    startActivity(new Intent(this,admin_home.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    startActivity(new Intent(this,AdminHome.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             } else {
 
                 DataBaseManager dataBaseManager = new DataBaseManager(this);
@@ -51,13 +56,13 @@ public class Login_activity extends AppCompatActivity {
 
                     SessionManager sessionManager = new SessionManager(this);
                     sessionManager.createLoginSession(result);
-                    startActivity(new Intent(this, StudentHome_activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                    // Toast.makeText(Login_activity.this,sessionManager.getUserId(),Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, StudentHome.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    // Toast.makeText(Login.this,sessionManager.getUserId(),Toast.LENGTH_SHORT).show();
                 }
 
             }
         } else {
-            Toast.makeText(Login_activity.this, "Insert All Field", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Login.this, "Insert All Field", Toast.LENGTH_SHORT).show();
         }
     }
 

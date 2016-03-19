@@ -1,4 +1,4 @@
-package bubtjobs.com.admin;
+package bubtjobs.com.admin.Getter_Setter;
 
 /**
  * Created by Murtuza on 3/15/2016.
