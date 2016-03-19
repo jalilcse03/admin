@@ -8,12 +8,14 @@ import java.util.ArrayList;
 
 import bubtjobs.com.admin.Adapter.NotificationAdapter;
 import bubtjobs.com.admin.DataBase.DataBaseManager;
+import bubtjobs.com.admin.Others.SessionManager;
 import bubtjobs.com.admin.R;
 
 public class StudentNotification extends AppCompatActivity {
     ListView listView;
     ArrayList<String> list;
     DataBaseManager manager;
+    SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +23,9 @@ public class StudentNotification extends AppCompatActivity {
         listView=(ListView)findViewById(R.id.listView);
 
         manager=new DataBaseManager(this);
+        sessionManager=new SessionManager(this);
 
+        setTitle(sessionManager.getUserName()+" Inbox");
 
         list=new ArrayList<>();
         list=manager.getNotification();

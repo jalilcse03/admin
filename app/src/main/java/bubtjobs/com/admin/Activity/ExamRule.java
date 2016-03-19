@@ -13,6 +13,8 @@ public class ExamRule extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exam_rule);
+
+        setTitle("Exam Rule");
     }
     public void backOperation(View view)
     {

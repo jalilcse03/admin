@@ -12,6 +12,7 @@ import bubtjobs.com.admin.DataBase.DataBaseHelper;
 import bubtjobs.com.admin.Getter_Setter.AnswerSetMaker;
 import bubtjobs.com.admin.Getter_Setter.QuestionSetMake;
 import bubtjobs.com.admin.Getter_Setter.RegistrationListMaker;
+import bubtjobs.com.admin.Others.SessionManager;
 
 /**
  * Created by Murtuza on 3/15/2016.
@@ -20,10 +21,12 @@ public class DataBaseManager {
     private DataBaseHelper helper;
     private QuestionSetMake questionSetMake;
     private SQLiteDatabase database;
+    Context context;
 
 
     public DataBaseManager(Context context){
         helper=new DataBaseHelper(context);
+        this.context=context;
     }
 
     private void open(){
@@ -209,7 +212,7 @@ public class DataBaseManager {
         }
     }
     /**************************** login *******************************************/
-    public String login(String email,String password)
+    public boolean login(String email,String password)
     {
         try {
             this.open();
@@ -218,19 +221,23 @@ public class DataBaseManager {
             cursor.moveToFirst();
 
             if (cursor != null && cursor.getCount() > 0) {
-                String id=cursor.getString(cursor.getColumnIndex(DataBaseHelper.COL_ID));
+                String user_id=cursor.getString(cursor.getColumnIndex(DataBaseHelper.COL_ID));
+                String user_name=cursor.getString(cursor.getColumnIndex(DataBaseHelper.NAME));
+                SessionManager sessionManager=new SessionManager(context);
+                sessionManager.setUserId(user_id);
+                sessionManager.setUserName(user_name);
                 this.close();
-                return id;
+                return true;
             } else {
                 this.close();
-                return "no";
+                return false;
             }
         }
         catch (Exception e)
         {
             this.close();
             //return e.toString();
-            return "error";
+            return false;
         }
 
     }

@@ -18,6 +18,8 @@ public class AdminSendNotification extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_send_notification);
+        setTitle("Admin");
+
         message=(EditText)findViewById(R.id.messageEt);
         function=new CommonFunction();
     }

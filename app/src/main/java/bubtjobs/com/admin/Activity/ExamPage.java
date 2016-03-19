@@ -35,6 +35,9 @@ public class ExamPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exam_page);
 
+        setTitle("Exam Page");
+
+
         timeTv = (TextView) findViewById(R.id.time);
         back_btn = (ImageButton) findViewById(R.id.back_btn);
         listView = (ListView) findViewById(R.id.listView);

@@ -11,12 +11,12 @@ public class CommonFunction {
     public CommonFunction(){
 
     }
-    public  boolean isValidEmail(CharSequence target)
+    public  boolean isValidEmail(EditText target)
     {
-        if (TextUtils.isEmpty(target)) {
+        if (TextUtils.isEmpty(target.getText().toString())) {
             return false;
         } else {
-            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target.getText().toString()).matches();
         }
     }
     // Is Empty Check Edittext

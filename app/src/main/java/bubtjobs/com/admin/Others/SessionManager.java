@@ -24,6 +24,8 @@ public class SessionManager {
 	// User pass (make variable public to access from outside)
 	public static final String KEY_ID="id";
 
+	public static final String USER_NAME="userName";
+
 	// exam button
 	public static final String BUTTON_TEXT="exambutton";
 
@@ -42,7 +44,7 @@ public class SessionManager {
 	
 	
 	// create login session
-	public void createLoginSession(String id){
+	public void setUserId(String id){
 		
 		//store login value is true
 		editor.putBoolean(IS_LOGIN, true);
@@ -57,6 +59,17 @@ public class SessionManager {
 	public String getUserId(){
 
 		return perf.getString(KEY_ID, null);
+	}
+
+	public void setUserName(String s)
+	{
+		editor.putString(USER_NAME,s);
+		//commit changes
+		editor.commit();
+	}
+	public String getUserName()
+	{
+		return perf.getString(USER_NAME, " ");
 	}
 
     public void logoutUser(){

@@ -30,6 +30,8 @@ public class StudentHome extends AppCompatActivity implements View.OnClickListen
         sessionManager=new SessionManager(this);
         alertDialogManager=new AlertDialogManager();
 
+        setTitle(sessionManager.getUserName());
+
 
         notificationBt=(Button)findViewById(R.id.notificationBt);
         examBt=(Button)findViewById(R.id.examBt);

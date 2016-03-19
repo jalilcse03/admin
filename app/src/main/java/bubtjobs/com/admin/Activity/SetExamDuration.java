@@ -21,6 +21,8 @@ public class SetExamDuration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_exam_duration);
 
+        setTitle("Admin");
+
         sessionManager=new SessionManager(this);
         commonFunction=new CommonFunction();
         timeEd=(EditText)findViewById(R.id.timeEt);

@@ -23,6 +23,7 @@ public class ShowRegistrationList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_resgistration_list);
+        setTitle("Admin");
 
         registrationListView=(ListView)findViewById(R.id.registrationListView);
 

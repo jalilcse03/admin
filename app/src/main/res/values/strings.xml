@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Admin</string>
+    <string name="app_name">Bitm</string>
     <!-- button name-->
     <string name="registration_list_btn">Registration List</string>
     <string name="notification_btn">Send Notification</string>

@@ -24,6 +24,7 @@ public class AdminHome extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_home);
 
+        setTitle("Admin Home");
         init();
     }
     public void init(){
