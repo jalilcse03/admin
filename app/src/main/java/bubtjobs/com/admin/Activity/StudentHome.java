@@ -89,8 +89,8 @@ public class StudentHome extends AppCompatActivity implements View.OnClickListen
 
             break;
             case R.id.examBt:
-               // boolean isExamStatusUpdate=dataBaseManager.studentExamStatusUpdate(sessionManager.getUserId());
-                if(true)
+                boolean isExamStatusUpdate=dataBaseManager.studentExamStatusUpdate(sessionManager.getUserId());
+                if(isExamStatusUpdate)
                 {
                     answerReset();
                     startActivity(new Intent(this,ExamPage.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));

@@ -15,6 +15,9 @@
 
     <string name="title_activity_registration_list_activity">RegistrationList_activity</string>
 
+    <!-- exam rule-->
+    <string name="exam_rule1">If user close the appp during in the exam. The User will get marks and can not attend again.</string>
+
     <!-- hint -->
     <string name="hint_exam_duration">Set Exam Duration In Minute</string>
     <string name="hint_write_something">Write something here.....</string>
